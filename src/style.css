@@ -1,0 +1,167 @@
+.navbar {
+  height: 70px;
+  background-color: #689f38;
+  z-index: 6; 
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.navbar-light .navbar-brand {
+  color:#fff;
+}
+
+.jumbotron {  
+  border-radius: 0;
+  background-image: radial-gradient(farthest-corner at 50% 80%,#7cb342 5%,#456d1b 80%);
+  background-color: #7cb342;
+  overflow: hidden;
+  position: relative; 
+  z-index: 0; 
+  padding: 1rem 1rem; 
+}
+
+.jumbotron label {
+  color:#fff;
+  line-height: 1rem;
+}
+
+.jumbotron p.myfont {
+  line-height: 2rem;
+  font-size: 2rem;
+}
+
+.jumbotron span.myfont2 {
+  line-height: 1rem;
+  font-size: 1rem;
+}
+
+.jumbotron h2 {
+  color:#fff;
+  font-size:1.7rem;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.jumbotron p {
+  font-size: 2rem;
+  line-height: 1.7rem;
+}
+
+.cell-calendar {
+  margin: 2px;
+  border: 1px solid olivedrab;
+  padding: 2px;
+}
+
+.cellDate {
+  margin:0 0 0 5px;
+  padding:0;
+}
+
+.cellBe {
+  margin:0 5px 0 5px;
+  padding:0;
+  text-align: right;
+}
+
+.cirk {
+  position: absolute;
+  width: 100%;
+  opacity: .4;
+  animation-name: cirk;
+  animation-duration: 100s;
+  animation-direction: normal;
+  animation-play-state: running;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  transform-origin: 50% 50%;
+  z-index: -1;  
+}
+
+.cirk_2 {
+  position: absolute;
+  width: 120%;
+  opacity: .3;
+  animation-name: cirk_2;
+  animation-duration: 100s;
+  animation-direction: normal;
+  animation-play-state: running;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  transform-origin: 50% 50%;
+  z-index: -1;  
+}
+
+.help img {
+  width:90%;
+  margin-bottom:10px;
+}
+
+.table .thead-dark th.th1 {
+  min-width: 160px;
+}
+
+.table .thead-dark th.th2 {
+  min-width: 90px;
+}
+
+@keyframes cirk {
+  0% {
+      transform: rotate(0) scale(1)
+  }
+
+  50% {
+      transform: rotate(180deg) scale(2)
+  }
+
+  100% {
+      transform: rotate(360deg) scale(1)
+  }
+}
+
+@keyframes cirk_2 {
+  0% {
+      transform: rotate(0) scale(1)
+  }
+
+  50% {
+      transform: rotate(-180deg) scale(1)
+  }
+
+  100% {
+      transform: rotate(-360deg) scale(1)
+  }
+}
+
+@media (max-width: 575.98px) { 
+  .jumbotron p.myfont {
+    line-height: 1.7rem;
+    font-size: 1.7rem;
+  }
+  
+  .jumbotron span.myfont2 {
+    line-height: 1rem;
+    font-size: 0.8rem;
+  }
+
+  .jumbotron label {
+    color:#fff;
+    line-height: .8rem;
+    font-size: .7rem;
+  }
+  
+  .jumbotron h2 {
+    color:#fff;
+    font-size:1.2rem;
+    line-height: 1.4rem;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+  }
+  .table .thead-dark th {
+    min-width: 110px;
+    font-size: .8rem;
+  }  
+
+  .little3 {font-size: .7rem;}
+
+  h3 {font-size: 1.3rem;}
+  h5 {font-size: 1.1rem;}
+  
+ }
