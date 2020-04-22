@@ -8,6 +8,8 @@ const CalendarBox = ({myBe, myDate}) => {
   date[2] = new Date(myDate-(24*60*60*1000));
   date[3] = new Date(myDate+(24*60*60*1000*32));
 
+  console.log(myBe[0]);
+
   const options = {    
     // year: 'numeric',
     // month: 'numeric',
@@ -15,7 +17,7 @@ const CalendarBox = ({myBe, myDate}) => {
   };
 
   const monthItem = (numberMonth) => {
-    let a = myBe.filter(item => item.date.getMonth() === date[numberMonth].getMonth());
+    let a = myBe.filter(item => {let d = new Date(item.date); return d.getMonth() === date[numberMonth].getMonth()});
     const elements = a.map((item) => { 
       const { date, be } = item;
       let dateItem = new Date(date);  
@@ -26,9 +28,9 @@ const CalendarBox = ({myBe, myDate}) => {
   }
  
   return (
-  <div className="row">
+  <div className="row mb-5">
     <div className="col-sm-6">
-      <div className="row">
+      <div className="row p-2">
       <div className="col">{date[0].toLocaleString("ru", {month: 'long'}).toUpperCase()}</div>
         <div className="w-100"></div>
         <div className="col">Пн</div>
@@ -43,7 +45,7 @@ const CalendarBox = ({myBe, myDate}) => {
       </div>
     </div>
     <div className="col-sm-6">
-    <div className="row">
+    <div className="row p-2">
       <div className="col">{date[1].toLocaleString("ru", {month: 'long'}).toUpperCase()}</div>
         <div className="w-100"></div>
         <div className="col">Пн</div>
@@ -58,7 +60,7 @@ const CalendarBox = ({myBe, myDate}) => {
       </div>
     </div>
     <div className="col-sm-6">
-    <div className="row">
+    <div className="row p-2">
       <div className="col">{date[2].toLocaleString("ru", {month: 'long'}).toUpperCase()}</div>
         <div className="w-100"></div>
         <div className="col">Пн</div>
@@ -73,7 +75,7 @@ const CalendarBox = ({myBe, myDate}) => {
       </div>
     </div>
     <div className="col-sm-6">
-    <div className="row">
+    <div className="row p-2">
       <div className="col">{date[3].toLocaleString("ru", {month: 'long'}).toUpperCase()}</div>
         <div className="w-100"></div>
         <div className="col">Пн</div>
