@@ -47,19 +47,48 @@
 
 .cell-calendar {
   margin: 2px;
+  min-height: 40px;
   border: 1px solid olivedrab;
+  padding: 2px;
+}
+
+.myperiod {
+background-color: #7cb342;
+}
+
+.today {
+  background-color: #456d1b;
+}
+
+.lastday {
+  background-color: red;
+}
+
+.cell-calendar-d {
+  margin: 2px;
+  min-height: 40px;
+  border: 1px solid #ddd;
   padding: 2px;
 }
 
 .cellDate {
   margin:0 0 0 5px;
   padding:0;
+  font-size: 1rem;
+  font-weight: bold;
 }
 
 .cellBe {
-  margin:0 5px 0 5px;
+  margin:0 5px 0 0;
   padding:0;
   text-align: right;
+  color:green;
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.cellBe span{
+  font-size: .8rem;
 }
 
 .cirk {

@@ -8,20 +8,48 @@ const CalendarBox = ({myBe, myDate}) => {
   date[2] = new Date(myDate-(24*60*60*1000));
   date[3] = new Date(myDate+(24*60*60*1000*32));
 
-  console.log(myBe[0]);
-
   const options = {    
     // year: 'numeric',
     // month: 'numeric',
     day: 'numeric',   
   };
 
+  myBe = myBe.map((item) => {
+    item.classN = '';
+    if (item.date >= myDate - (24*60*60*1000*60) && item.date <= myDate ) item.classN = 'myperiod';
+    if (item.date === myDate - (24*60*60*1000*60)) item.classN = 'lastday';
+    if (item.date === myDate) item.classN = 'today';    
+    return item;
+  }); 
+
   const monthItem = (numberMonth) => {
-    let a = myBe.filter(item => {let d = new Date(item.date); return d.getMonth() === date[numberMonth].getMonth()});
-    const elements = a.map((item) => { 
-      const { date, be } = item;
-      let dateItem = new Date(date);  
-      let cell = (<div key={date} className="col cell-calendar"><p className='cellDate'>{dateItem.toLocaleString("ru", options)}</p><p className='cellBe'>{be}<span className='myfont2'>БЕ</span></p></div>);
+    let a = myBe.filter(item => {let d = new Date(item.date); return d.getMonth() === date[numberMonth].getMonth()});    
+    const elements = a.map((item, index,array) => { 
+      const { date, be, classN } = item;
+      let dateItem = new Date(date);    
+      let classNames = 'col cell-calendar'; 
+      if (classN) classNames = classNames + ' ' + classN;
+      let cell = (<>
+                    {(index === 0) && (dateItem.getDay() === 2) && <div className="col  cell-calendar-d"></div>}
+                    {(index === 0) && (dateItem.getDay() === 3) && <><div className="col  cell-calendar-d"></div><div className="col  cell-calendar-d"></div></>}
+                    {(index === 0) && (dateItem.getDay() === 4) && <><div className="col  cell-calendar-d"></div><div className="col  cell-calendar-d"></div><div className="col  cell-calendar-d"></div></>}
+                    {(index === 0) && (dateItem.getDay() === 5) && <><div className="col  cell-calendar-d"></div><div className="col  cell-calendar-d"></div><div className="col  cell-calendar-d"></div><div className="col  cell-calendar-d"></div></>}
+                    {(index === 0) && (dateItem.getDay() === 6) && <><div className="col  cell-calendar-d"></div><div className="col  cell-calendar-d"></div><div className="col  cell-calendar-d"></div><div className="col  cell-calendar-d"></div><div className="col  cell-calendar-d"></div></>}
+                    {(index === 0) && (dateItem.getDay() === 0) && <><div className="col  cell-calendar-d"></div><div className="col  cell-calendar-d"></div><div className="col  cell-calendar-d"></div><div className="col  cell-calendar-d"></div><div className="col  cell-calendar-d"></div><div className="col  cell-calendar-d"></div></>}
+                    <div key={date} className={classNames}>
+                    <p className='cellDate'>{dateItem.toLocaleString("ru", options)}</p>
+                    {be ? (<p className='cellBe'>{be}<span>БЕ</span></p>) : null}                    
+                    </div>
+                    { dateItem.getDay() === 0 && <div className="w-100"></div> }
+                    {(index === array.length-1) && (dateItem.getDay() === 6) && <div className="col  cell-calendar-d"></div>}
+                    {(index === array.length-1) && (dateItem.getDay() === 5) && <><div className="col  cell-calendar-d"></div><div className="col  cell-calendar-d"></div></>}
+                    {(index === array.length-1) && (dateItem.getDay() === 4) && <><div className="col  cell-calendar-d"></div><div className="col  cell-calendar-d"></div><div className="col  cell-calendar-d"></div></>}
+                    {(index === array.length-1) && (dateItem.getDay() === 3) && <><div className="col  cell-calendar-d"></div><div className="col  cell-calendar-d"></div><div className="col  cell-calendar-d"></div><div className="col  cell-calendar-d"></div></>}
+                    {(index === array.length-1) && (dateItem.getDay() === 2) && <><div className="col  cell-calendar-d"></div><div className="col  cell-calendar-d"></div><div className="col  cell-calendar-d"></div><div className="col  cell-calendar-d"></div><div className="col  cell-calendar-d"></div></>}
+                    {(index === array.length-1) && (dateItem.getDay() === 1) && <><div className="col  cell-calendar-d"></div><div className="col  cell-calendar-d"></div><div className="col  cell-calendar-d"></div><div className="col  cell-calendar-d"></div><div className="col  cell-calendar-d"></div><div className="col  cell-calendar-d"></div></>}
+                    
+                  </>                  
+                );      
       return cell;
     }); 
     return elements;
